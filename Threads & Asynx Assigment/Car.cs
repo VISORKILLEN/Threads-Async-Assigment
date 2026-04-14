@@ -9,20 +9,21 @@
 
         private static Random random = new Random();
 
+
         public void Drive(Action<Car> onFinish)
         {
             int seconds = 0;
 
             Console.WriteLine($"{Name} starts!");
 
-            
+            // Simulate the car driving until it reaches 5 km
             while (Distance < 5)
             {
                 Thread.Sleep(1000);
                 seconds++;
 
                 Distance += Speed / 3600.0;
-
+                
                 if (seconds % 10 == 0)
                 {
                     HandleEvent();
@@ -31,10 +32,12 @@
 
             Finished = true;
             Console.WriteLine($"{Name} finished!");
-
+            
             onFinish(this);
         }
 
+
+        // Simulate random events that can happen to the car during the
         private void HandleEvent()
         {
             int roll = random.Next(1, 51);
