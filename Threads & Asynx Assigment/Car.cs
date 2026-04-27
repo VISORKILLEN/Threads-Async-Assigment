@@ -9,15 +9,14 @@
 
         private static Random random = new Random();
 
-
-        public void Drive(Action<Car> onFinish)
+        public void Drive()
         {
             int seconds = 0;
 
             Console.WriteLine($"{Name} starts!");
 
             // Simulate the car driving until it reaches 5 km
-            while (Distance < 5)
+            while (Distance < 1)
             {
                 Thread.Sleep(1000);
                 seconds++;
@@ -32,8 +31,8 @@
 
             Finished = true;
             Console.WriteLine($"{Name} finished!");
-            
-            onFinish(this);
+
+            Race.OnCarFinished(this);
         }
 
 
